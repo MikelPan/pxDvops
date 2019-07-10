@@ -1,4 +1,3 @@
-i
 ### 项目介绍
 #### 模块概述
 - 用户模块
@@ -14,11 +13,13 @@ i
 
 首先安装好python基础环境，vue基础环境nodejs
 项目开发基础环境：
-	1、python == 3.7.1
-	2、django == 2.2.3
-	3、vue    == 2.9.6
 
-> 安装django
+```shell
+1、python == 3.7.1
+2、django == 2.2.3
+3、vue    == 2.9.6
+```
+安装django
 ```shell
 # 安装虚拟环境
 pip install virtualenvwrapper-win
@@ -33,7 +34,7 @@ django-admin startproject pxDevops
 进入到创建的项目的目录下，创建一个应用
 django-admin startapp users
 ```
-> 安装vue
+安装vue
 ```shell
 # 安装cnpm
 npm install -g cnpm --registry=https://registry.npm.taobao.org
@@ -43,13 +44,13 @@ cnpm install -g vue vue-cli
 进去到项目目录下 E:\PycharmProjects\Projects\pxDvops\
 vue init webpack pxdevops-front
 ```
-> 生成项目依赖
+生成项目依赖
 ```shell
 # 生成整个环境的依赖
 pip freeze > requirements.txt
 # 生成整个项目的依赖
 pip install pipreqs
-pirpreqs ./  # 进入到项目根目录执行
+pipreqs ./ --force # 进入到项目根目录执行
 ```
 #### 项目运行
 ```shell
