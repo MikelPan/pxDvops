@@ -127,3 +127,4 @@ dmypy.json
 .gitignore
 .idea/
 pxDevops-front/node_modules
+package-lock.json
