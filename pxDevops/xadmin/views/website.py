@@ -45,7 +45,9 @@ class LoginView(BaseAdminView):
 
     @never_cache
     def get(self, request, *args, **kwargs):
+        print(request)
         context = self.get_context()
+        print(context)
         helper = FormHelper()
         helper.form_tag = False
         helper.include_media = False
