@@ -23,7 +23,7 @@
 ```shell
 # 安装虚拟环境
 pip install virtualenvwrapper-win
-配置环境变量 WORK_HOME=E:\PycharmProjects\Envs
+配置环境变量 WORKON_HOME=E:\PycharmProjects\Envs
 # 启动虚拟环境
 mkvirtualenv pxDevops
 # 安装django
@@ -36,6 +36,9 @@ django-admin startapp users
 ```
 安装vue
 ```shell
+# 配置nodejs
+npm config set prefix "D:\Program Files\nodejs\node_cache"
+npm config set prefix "D:\Program Files\nodejs\node_global"
 # 安装cnpm
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 # 安装vue
@@ -51,6 +54,13 @@ pip freeze > requirements.txt
 # 生成整个项目的依赖
 pip install pipreqs
 pipreqs ./ --force # 进入到项目根目录执行
+```
+xadmin后台集成到django中
+```shell
+# 下载django2 的源码包到本地
+git clone -b django2 https://github.com/sshwsfc/xadmin.git
+# 安装xadmin
+python install setup.py
 ```
 #### 项目运行
 ```shell
