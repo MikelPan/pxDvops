@@ -22,4 +22,5 @@ xversion.register_models()
 
 urlpatterns = [
     path('xadmin/', xadmin.site.urls),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
