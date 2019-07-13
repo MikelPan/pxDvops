@@ -28,6 +28,7 @@ pip install virtualenvwrapper-win
 mkvirtualenv pxDevops
 # 安装django
 pip install django
+pip install -i https://pypi.douban.com/simple django
 # 初始化项目
 进入到新创建的目录下 E:\PycharmProjects\Projects\pxDvops
 django-admin startproject pxDevops
