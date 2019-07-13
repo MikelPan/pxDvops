@@ -15,7 +15,9 @@ import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+sys.path.insert(0, BASE_DIR)
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+# sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +29,7 @@ SECRET_KEY = '*=+i$1mqa5z)@m$0zg7&c=$2s0j$si0*s!y$i_8e=t728-c@y_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,6 +46,8 @@ INSTALLED_APPS = [
     'reversion',
     'rest_framework',
     'users',
+    'DjangoUeditor',
+    'apps',
 ]
 
 REST_FRAMEWORK = {
@@ -65,6 +69,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL  = True
 
 ROOT_URLCONF = 'pxDevops.urls'
 
@@ -99,7 +105,7 @@ DATABASES = {
         'NAME': 'pxdevops',
         'USER': 'root',
         'PASSWORD': 'Password1',
-        'HOST': '192.168.99.115',
+        'HOST': '192.168.174.10',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': 'SET default_storage_engine=INNODB;'
@@ -138,10 +144,16 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

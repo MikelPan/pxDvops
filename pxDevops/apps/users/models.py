@@ -7,53 +7,18 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class AbstractUser(AbstractBaseUser, PermissionsMixin):
-    """
-    An abstract base class implementing a fully featured User model with
-    admin-compliant permissions.
-
-    Username and password are required. Other fields are optional.
-    """
-    username_validator = UnicodeUsernameValidator()
-
-    username = models.CharField(
-        _('username'),
-        max_length=150,
-        unique=True,
-        help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
-        validators=[username_validator],
-        error_messages={
-            'unique': _("A user with that username already exists."),
-        },
-    )
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=150, blank=True)
-    email = models.EmailField(_('email address'), blank=True)
-    is_staff = models.BooleanField(
-        _('staff status'),
-        default=False,
-        help_text=_('Designates whether the user can log into this admin site.'),
-    )
-    is_active = models.BooleanField(
-        _('active'),
-        default=True,
-        help_text=_(
-            'Designates whether this user should be treated as active. '
-            'Unselect this instead of deleting accounts.'
-        ),
-    )
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
-
-    objects = UserManager()
-
-    EMAIL_FIELD = 'email'
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+class UserProfile(AbstractUser):
+    """定义用户"""
+    name = models.CharField(max_length=30, null=True, blank=True, verbose_name="姓名")
+    birthday = models.DateField(null=True, blank=True, verbose_name="出生年月")
+    gender = models.CharField(max_length=6, choices=(("male", "男"), ("female", "女")), default="male", verbose_name="性别")
+    mobile = models.CharField(null=True, blank=True, max_length=11, verbose_name="电话")
+    email = models.CharField(max_length=100, null=True, blank=True, verbose_name="邮箱")
 
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
-        abstract = True
+        db_table = 'user_info'
+        verbose_name = "用户"
+        verbose_name_plural = verbose_name
 
-class User(models.Model):
-
+    def __str__(self):
+        return self.username
