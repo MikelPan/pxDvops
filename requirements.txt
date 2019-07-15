@@ -1,4 +1,6 @@
 Django==2.2.3
+Markdown==3.1.1
+djangorestframework==3.9.4
 django-crispy-forms==1.7.2
 django-import-export>=0.5.1
 django-reversion>=2.0.0
@@ -8,4 +10,11 @@ httplib2==0.13.0
 six==1.12.0
 xadmin==0.6.1
 pillow==6.1.0
-mysqlclinet
+mysqlclinet==1.4.2
+xadmin-0.6.1
+pygments==2.4.2
+coreapi==2.3.3
+django-guardian==2.0.0
+django-cors-headers==3.0.2
+djangorestframework-jwt==1.11.0
+

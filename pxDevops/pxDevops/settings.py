@@ -17,7 +17,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
-# sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'users',
     'DjangoUeditor',
     'apps',
+    'django_filters',
+    'corsheaders',
+    # 'rest_framework.authtoken',
 ]
 
 REST_FRAMEWORK = {
@@ -56,8 +59,14 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+     ],
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+
+    # 'PAGE_SIZE': 10,
 }
 
 MIDDLEWARE = [
@@ -68,9 +77,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL  = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'pxDevops.urls'
 
@@ -91,6 +102,18 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pxDevops.wsgi.application'
+
+
+# AUTHENTICATION
+AUTHENTICATION_BACKENDS = (
+    # 'users.views.CustomBackend',
+)
+
+import datetime
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+}
 
 
 # Database
@@ -116,6 +139,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = 'users.UserProfile'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
