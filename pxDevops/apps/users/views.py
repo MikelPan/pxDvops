@@ -253,4 +253,4 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     """
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-    permission_classes = [IsAccountAdminOrReadOnly]
+    #permission_classes = IsAccountAdminOrReadOnly

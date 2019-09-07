@@ -41,15 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'xadmin',
     'crispy_forms',
     'reversion',
     'rest_framework',
     'users',
     'DjangoUeditor',
+    'xadmin',
     'apps',
     'django_filters',
     'corsheaders',
+    'extra_apps',
     # 'rest_framework.authtoken',
 ]
 
@@ -106,7 +107,9 @@ WSGI_APPLICATION = 'pxDevops.wsgi.application'
 
 # AUTHENTICATION
 AUTHENTICATION_BACKENDS = (
-    # 'users.views.CustomBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    #'users.views.CustomBackend',
+    'users.backends.EmailBackend',
 )
 
 import datetime
@@ -127,8 +130,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pxdevops',
         'USER': 'root',
-        'PASSWORD': 'Password1',
-        'HOST': '192.168.174.10',
+        'PASSWORD': '123456',
+        'HOST': '192.168.174.134',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': 'SET default_storage_engine=INNODB;'

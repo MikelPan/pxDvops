@@ -12,6 +12,7 @@ from .models import UserProfile
 
 
 
+
 class UserProfileAdmin(object):
       list_display = ['username', 'first_name', 'name', 'birthday', 'gender', 'mobile', 'email']
       search_fields = ['name', 'birthday', 'gender', 'mobile', 'email']
