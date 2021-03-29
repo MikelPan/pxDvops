@@ -12,7 +12,7 @@ xadmin==0.6.1
 pillow==6.2.0
 mysqlclinet==1.4.2
 xadmin-0.6.1
-pygments==2.4.2
+pygments==2.7.4
 coreapi==2.3.3
 django-guardian==2.0.0
 django-cors-headers==3.0.2
